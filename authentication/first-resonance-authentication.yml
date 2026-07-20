@@ -1,0 +1,46 @@
+generated: '2026-07-19'
+method: searched
+source: https://manual.firstresonance.io/api/access-tokens
+docs:
+- https://manual.firstresonance.io/api/access-tokens
+- https://manual.firstresonance.io/api/api-keys
+summary:
+  types: [oauth2]
+  oauth2_flows: [clientCredentials]
+  model: >-
+    OAuth 2.0 client-credentials. An ION API key is a clientId/clientSecret pair
+    created per Organization (via UI or API). It is exchanged for a JWT access
+    token at a Keycloak "api-keys" realm token endpoint, then sent on the GraphQL
+    request in the Authorization header.
+  identity_provider: Keycloak (realm "api-keys")
+  permission_model: >-
+    An API key inherits (freezes) the permissions its creating user held at the
+    moment of generation (RBAC via the APIKeyObject permission family). Service
+    accounts are recommended over personal keys to decouple keys from user
+    deactivation and preserve an audit trail. This is a permission model rather
+    than an OAuth scope model, so no granular API scope reference is published.
+schemes:
+- name: apiKeyClientCredentials
+  type: oauth2
+  flow: clientCredentials
+  grant_type: client_credentials
+  token_request: |
+    curl -X POST \
+      --data-urlencode "grant_type=client_credentials" \
+      -d "client_id=CLIENT_ID" \
+      -d "client_secret=CLIENT_SECRET" \
+      https://<AUTH_SERVER>/realms/api-keys/protocol/openid-connect/token
+  authorization_header: 'Authorization: <access_token>'
+  environments:
+  - {env: production, auth_server: auth.buildwithion.com, api: https://api.buildwithion.com, realm_token_endpoint: https://auth-production-pub.buildwithion.com/realms/api-keys/protocol/openid-connect/token}
+  - {env: staging-sandbox, auth_server: staging-auth.buildwithion.com, api: https://staging-api.buildwithion.com}
+  - {env: gov-staging, auth_server: auth-staging-gov.buildwithion.com, api: https://api-staging-gov.buildwithion.com}
+  - {env: gov-production, auth_server: auth-production-gov.buildwithion.com, api: https://api-production-gov.buildwithion.com}
+  - {env: aus-staging, auth_server: auth-staging-aus.buildwithion.com, api: https://api-staging-aus.buildwithion.com}
+  - {env: aus-production, auth_server: auth-production-aus.buildwithion.com, api: https://api-production-aus.buildwithion.com}
+notes:
+- Keys are environment-specific (a production key does not work in sandbox).
+- Generating a new key pair does not invalidate existing keys; keys must be disabled manually.
+- Keys are auto-disabled when the creating user is deactivated (hence the service-account recommendation).
+- SSO (Okta SAML) and enforced MFA are available for interactive user login, separate from API-key auth.
+- The beta MCP server authenticates separately via OAuth 2.1 DCR (see mcp/first-resonance-mcp.yml).
