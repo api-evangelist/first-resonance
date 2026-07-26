@@ -1,0 +1,53 @@
+generated: '2026-07-19'
+method: searched
+source: https://manual.firstresonance.io/api
+docs:
+- https://manual.firstresonance.io/api/pagination
+- https://manual.firstresonance.io/api/access-tokens
+- https://manual.firstresonance.io/api/api-change-policy
+api_style: GraphQL
+authentication:
+  style: OAuth 2.0 client-credentials bearer (API key), Authorization header
+  ref: authentication/first-resonance-authentication.yml
+pagination:
+  style: cursor
+  spec: Relay-style GraphQL connections
+  request_params: [first, last, after, before]
+  response_fields:
+    edges: array of result nodes
+    pageInfo:
+      endCursor: cursor to fetch the next page
+      hasNextPage: more results exist
+      totalCount: total number of available items
+      count: number of items in the current response
+  guidance: >-
+    Pagination parameters should be supplied to avoid network timeouts on large
+    result sets.
+error_envelope:
+  style: GraphQL
+  shape: >-
+    Errors are returned in the standard GraphQL top-level "errors" array (message,
+    path, extensions) alongside partial "data"; HTTP transport status is typically
+    200 for GraphQL execution errors. Not RFC 9457 problem+json.
+versioning:
+  scheme: unversioned-additive
+  policy_url: https://manual.firstresonance.io/api/api-change-policy
+  approach: >-
+    A single evolving GraphQL schema. First priority is API stability; changes are
+    preferably additive (new fields, expanded functionality) requiring no customer
+    action. Breaking changes are announced at least 14 days in advance with
+    rationale, before/after payload examples, and in-app + release-note notices.
+  ref: lifecycle/first-resonance-lifecycle.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key header or contract is documented. GraphQL mutations are the
+    write path; retry-safety is not published as an explicit idempotency contract.
+rate_limiting:
+  documented: false
+  note: No rate-limit headers or quotas are published in the developer manual.
+request_tracing:
+  documented: false
+events:
+  webhooks: true
+  ref: asyncapi/first-resonance-webhooks.yml

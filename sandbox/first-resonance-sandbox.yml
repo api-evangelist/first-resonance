@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: searched
+source: https://manual.firstresonance.io/api/api-keys
+description: >-
+  ION separates sandbox/staging from production as fully distinct environments
+  (separate API hosts, auth servers, and API keys). There are no published magic
+  test values or test cards; the sandbox is a real isolated environment plus an
+  in-app Interactive API Explorer that acts as a live GraphQL console/playground.
+environment_separation:
+  isolation: full (production keys do not work in sandbox and vice versa)
+  environments:
+  - {name: staging-sandbox, api: https://staging-api.buildwithion.com, auth_server: staging-auth.buildwithion.com}
+  - {name: production, api: https://api.buildwithion.com, auth_server: auth.buildwithion.com}
+  - {name: gov-staging, api: https://api-staging-gov.buildwithion.com}
+  - {name: gov-production, api: https://api-production-gov.buildwithion.com}
+  - {name: aus-staging, api: https://api-staging-aus.buildwithion.com}
+  - {name: aus-production, api: https://api-production-aus.buildwithion.com}
+console:
+  name: Interactive API Explorer
+  type: playground
+  url: https://manual.firstresonance.io/api/interactive-api-explorer
+  description: >-
+    Built-in GraphQL explorer inside the ION UI for composing and running live
+    queries/mutations and discovering the schema (including WebhookSubscription).
+access:
+  note: >-
+    Sandbox access is requested from an organization admin (or the external
+    organization you are building for); an admin must grant the API Keys and
+    Webhooks permissions.
+test_values:
+  published: false
+  note: No test cards, magic identifiers, or fixture generators are published (ION is a manufacturing MES, not a payments API).

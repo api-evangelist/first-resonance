@@ -1,8 +1,27 @@
 aid: first-resonance
 name: First Resonance
-description: 'First Resonance is a company surfaced as a portfolio company of craft-ventures and added
-  to the API Evangelist network as a stub for enrichment. Sector: infrastructure. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: 'First Resonance builds ION, a modern Factory Operating System (MES) for
+  companies manufacturing complex hardware in aerospace, defense, robotics, medical
+  devices, and clean energy. ION provides digital work instructions (Procedures and
+  Runs), part and inventory traceability, mBOM/aBOM management, quality and compliance
+  workflows, production scheduling (ION AutoPlan), and analytics. For developers, ION
+  exposes a GraphQL API (api.buildwithion.com) secured with OAuth 2.0 client-credentials
+  API keys, cursor-based (Relay) pagination, webhook subscriptions for realtime events,
+  and a beta hosted MCP server so AI agents can operate the factory system. This profile
+  was enriched from First Resonance''s public developer manual.'
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.firstresonance.io/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/first-resonance/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +31,108 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Infrastructure
-apis: []
+- Manufacturing
+- MES
+- Factory Operating System
+- Hardware
+- Aerospace
+- GraphQL
+- Traceability
+- Supply Chain
+apis:
+- name: ION GraphQL API
+  description: 'The ION Factory OS GraphQL API. A single GraphQL endpoint for reading
+    and writing manufacturing data in ION: Runs, Procedures, Parts, mBOM/aBOM, inventory,
+    notifications, and webhook subscriptions. Authentication is OAuth 2.0 client credentials
+    (API key clientId/clientSecret exchanged for an access token at a Keycloak realm),
+    with cursor-based Relay pagination and realtime webhook events.'
+  humanURL: https://manual.firstresonance.io/api
+  baseURL: https://api.buildwithion.com/graphql
+  tags:
+  - GraphQL
+  - Manufacturing
+  - MES
+  properties:
+  - type: GraphQL
+    url: https://api.buildwithion.com/graphql
+  - type: APIReference
+    url: https://manual.firstresonance.io/api/interactive-api-explorer
+  - type: Documentation
+    url: https://manual.firstresonance.io/api
+  - type: GettingStarted
+    url: https://manual.firstresonance.io/api/how-to-create-an-app-with-ion
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/first-resonance-trust-center.yml
+- type: Compliance
+  url: https://security.firstresonance.io/
 - type: Website
   url: https://firstresonance.io
+- type: DeveloperPortal
+  url: https://manual.firstresonance.io/api
+- type: Documentation
+  url: https://manual.firstresonance.io/
+- type: APIReference
+  url: https://manual.firstresonance.io/api/interactive-api-explorer
+- type: GettingStarted
+  url: https://manual.firstresonance.io/api/how-to-create-an-app-with-ion
+- type: Authentication
+  url: authentication/first-resonance-authentication.yml
+- type: Blog
+  url: https://www.firstresonance.io/blog
+- type: Pricing
+  url: https://www.firstresonance.io/plans
+- type: SignUp
+  url: https://app.firstresonance.io/login
+- type: Support
+  url: https://www.firstresonance.io/contact/support
+- type: TermsOfService
+  url: https://www.firstresonance.io/terms
+- type: PrivacyPolicy
+  url: https://www.firstresonance.io/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/firstresonance
+- type: StatusPage
+  url: https://status.firstresonance.io
+- type: ChangeLog
+  url: https://www.firstresonance.io/changelog
+- type: Deprecation
+  url: https://manual.firstresonance.io/api/api-change-policy
+- type: MCPServer
+  url: mcp/first-resonance-mcp.yml
+- type: Webhooks
+  url: asyncapi/first-resonance-webhooks.yml
+- type: WellKnown
+  url: well-known/first-resonance-well-known.yml
+- type: LLMsTxt
+  url: llms/first-resonance-llms.txt
+- type: Lifecycle
+  url: lifecycle/first-resonance-lifecycle.yml
+- type: Conventions
+  url: conventions/first-resonance-conventions.yml
+- type: Conformance
+  url: conformance/first-resonance-conformance.yml
+- type: Sandbox
+  url: sandbox/first-resonance-sandbox.yml
+- type: ChangeLog
+  url: changelog/first-resonance-changelog.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/first-resonance-domain-security.yml
+- type: Integrations
+  url: https://marketplace.firstresonance.io/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

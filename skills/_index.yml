@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: generated
+source: https://manual.firstresonance.io/api
+note: >-
+  ION exposes a GraphQL API (no OpenAPI). Skills are grounded in the documented
+  auth, pagination, and webhook flows; exact schema field names should be
+  confirmed in the Interactive API Explorer.
+skills:
+- file: first-resonance-authenticate-and-query.md
+  name: Authenticate to ION and run a paginated GraphQL query
+  api: https://api.buildwithion.com/graphql
+  operations: [client_credentials_token, graphql_query_paginated]
+- file: first-resonance-subscribe-to-webhooks.md
+  name: Subscribe to ION realtime webhooks
+  api: https://api.buildwithion.com/graphql
+  operations: [create_receiver, create_webhook_subscription]

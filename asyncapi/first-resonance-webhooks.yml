@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: searched
+type: Webhooks
+source: https://manual.firstresonance.io/api/webhooks
+description: >-
+  ION delivers realtime event information via webhooks. There is no published
+  AsyncAPI document; the webhook surface is modeled and configured through the
+  GraphQL API (Receivers + WebhookSubscriptions). The exhaustive list of
+  subscribable resources/actions is enumerated dynamically in ION's Interactive
+  API Explorer under WebhookSubscription.
+model:
+  receiver:
+    description: An HTTPS endpoint registered to receive ION webhook notifications.
+    fields:
+      sharedSecret: shared secret configured on the receiver
+      expectedResponseCode: HTTP status ION expects back on successful delivery
+  subscription:
+    description: A resource/action pair that triggers notifications to a receiver.
+    fields:
+      receiverId: target receiver endpoint id
+      resource: object type to watch (e.g. RUNS)
+      action: one of CREATE, UPDATE, DELETE (WebhookSubscriptionActions)
+delivery:
+  transport: HTTPS (required)
+  audit: an events audit trail records fired webhooks
+  ip_allowlist: >-
+    ION publishes IP allowlists per environment (staging, production, sandbox) so
+    receivers can restrict inbound traffic.
+security:
+  shared_secret: supported (sharedSecret on the receiver)
+  signature_verification: not documented
+example_events:
+- resource: RUNS
+  actions: [CREATE, UPDATE, DELETE]
+catalog_reference: >-
+  Full resource list: open the Interactive API Explorer
+  (https://manual.firstresonance.io/api/interactive-api-explorer) and inspect the
+  WebhookSubscription type.

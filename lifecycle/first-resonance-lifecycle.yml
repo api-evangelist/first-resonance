@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: searched
+source: https://manual.firstresonance.io/api/api-change-policy
+versioning:
+  scheme: unversioned-additive
+  current: single evolving GraphQL schema
+  docs: https://manual.firstresonance.io/api/about-graphql
+  approach: >-
+    Prefer non-breaking, additive changes (new fields / expanded functionality)
+    that require no customer action.
+deprecation:
+  policy_url: https://manual.firstresonance.io/api/api-change-policy
+  breaking_change_notice_days: 14
+  communication: [in-app notices, release notes, documentation updates]
+  process: >-
+    Breaking changes are announced at least 14 days before production rollout with
+    rationale, before/after payload examples, and broad notification. Deprecations
+    are scheduled after monitoring API usage. A formal sunset window beyond the
+    14-day notice is not published.
+  sunset_header: not documented
+api_changelog: https://manual.firstresonance.io/api/changelog
+status_page: https://status.firstresonance.io
+sla:
+  url: null
+  note: No public numeric uptime SLA published.
+deprecated_operations: []

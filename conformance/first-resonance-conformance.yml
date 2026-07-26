@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  Derived from ION developer manual (auth, pagination, webhooks) and the live
+  Keycloak OIDC discovery document at
+  auth.buildwithion.com/realms/api-keys/.well-known/openid-configuration.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: OAuth 2.0 client-credentials flow issues API access tokens (Keycloak realm token endpoint).
+- id: oauth2-client-credentials
+  conforms: true
+  evidence: grant_type=client_credentials documented and present in OIDC grant_types_supported.
+- id: oidc
+  conforms: true
+  evidence: Keycloak "api-keys" realm publishes a compliant /.well-known/openid-configuration.
+- id: oauth2.1-dcr
+  conforms: true
+  evidence: Beta MCP server publishes RFC 8414 metadata with registration_endpoint (DCR) and PKCE S256.
+- id: graphql
+  conforms: true
+  evidence: Public API is a single GraphQL endpoint (api.buildwithion.com/graphql).
+- id: relay-cursor-connections
+  conforms: true
+  evidence: Pagination uses first/last/after/before with edges + pageInfo (endCursor/hasNextPage).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are returned in the GraphQL errors array, not application/problem+json.
+- id: saml2-sso
+  conforms: true
+  evidence: SSO via Okta SAML documented for interactive user login.
+published_certifications:
+- SOC 2
+- FedRAMP
+- GDPR
+- FIPS 140
+compliance_source: https://security.firstresonance.io/
+compliance_note: >-
+  ION publishes a trust center at security.firstresonance.io naming SOC 2, FedRAMP,
+  GDPR, and FIPS 140 (see security/first-resonance-trust-center.yml). A Compliance
+  pointer is emitted. ION also operates gov-cloud (gov) and Australian (aus)
+  sovereign deployments consistent with this regulated-industry posture.

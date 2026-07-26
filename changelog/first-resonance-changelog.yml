@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.firstresonance.io/changelog
+scheme: dated-numbered-releases
+product_changelog: https://www.firstresonance.io/changelog
+api_changelog: https://manual.firstresonance.io/api/changelog
+api_change_policy: https://manual.firstresonance.io/api/api-change-policy
+notes: >-
+  ION publishes a numbered, dated product changelog on the marketing site and a
+  separate API changelog (breaking changes / deprecations) in the developer
+  manual. Only the latest product release was rendered at capture time; older
+  entries sit behind a "View Past Change Logs" link.
+entries:
+- id: 55
+  date: '2025-12-17'
+  type: release
+  highlights: >-
+    Unified reviews and modern editing in the new ION Procedures, execution logs
+    for ION Actions, improved inventory imports, and enhanced step-attribute
+    visibility.

@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+status: published
+maturity: beta
+source: https://manual.firstresonance.io/api/mcp-server-for-ai-agents-beta
+description: >-
+  First Resonance publishes an official hosted MCP (Model Context Protocol) server
+  that lets AI agents operate ION Factory OS. It is currently in beta and available
+  on staging only; production is not yet published. Authentication is OAuth 2.1 with
+  Dynamic Client Registration (DCR) and PKCE (S256) against an ION account.
+server:
+  name: ion
+  transport: http
+  url: https://mcp.staging.buildwithion.com/mcp
+  authorization_server: https://mcp.staging.buildwithion.com
+  oauth:
+    protocol: OAuth 2.1 DCR
+    metadata: well-known/first-resonance-mcp-oauth-authorization-server.json
+    authorization_endpoint: https://mcp.staging.buildwithion.com/authorize
+    token_endpoint: https://mcp.staging.buildwithion.com/token
+    registration_endpoint: https://mcp.staging.buildwithion.com/register
+    code_challenge_methods_supported: [S256]
+    scopes_supported: [openid, offline_access]
+clients:
+  claude:
+    setup: Profile > Settings > Connectors > Add custom connectors
+    url: https://mcp.staging.buildwithion.com
+    requirement: Claude Pro or higher
+  cursor:
+    config: |
+      {
+        "mcpServers": {
+          "ion": {
+            "url": "https://mcp.staging.buildwithion.com/mcp"
+          }
+        }
+      }
+    requirement: Active Cursor plan; Agent mode (not Ask)
+tools:
+  note: >-
+    The provider does not enumerate a fixed tool list in the docs; it recommends
+    asking the connected agent for its ION capabilities. Tools are backed by the
+    ION GraphQL API surface (Runs, Parts, Procedures, inventory, mBOM/aBOM).

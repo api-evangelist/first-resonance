@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: searched
+source: https://manual.firstresonance.io/api/access-tokens
+notes: >-
+  ION's public API host (api.buildwithion.com) exposes no /.well-known/ surface;
+  discovery lives on the Keycloak realm that issues API-key access tokens and on
+  the beta MCP server. Both documents below returned 200 and are saved verbatim.
+hosts:
+- host: https://auth.buildwithion.com
+  documents:
+  - path: /realms/api-keys/.well-known/openid-configuration
+    status: 200
+    file: first-resonance-openid-configuration.json
+    note: OpenID Connect discovery for the api-keys realm (client_credentials token endpoint)
+- host: https://mcp.staging.buildwithion.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: first-resonance-mcp-oauth-authorization-server.json
+    note: RFC 8414 OAuth 2.1 authorization-server metadata for the beta MCP server (DCR + PKCE S256)
+  - path: /.well-known/openid-configuration
+    status: 401
+probed_not_found:
+- host: https://api.buildwithion.com
+  paths:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+- host: https://www.firstresonance.io
+  paths:
+  - {path: /.well-known/security.txt, status: 404}
+- host: https://firstresonance.io
+  paths:
+  - {path: /.well-known/security.txt, status: 404}

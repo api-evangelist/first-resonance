@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: searched
+probe: true
+source: https://security.firstresonance.io/
+url: https://security.firstresonance.io/
+certifications:
+- SOC 2
+- FedRAMP
+- GDPR
+- FIPS 140
+evidence:
+- source: https://security.firstresonance.io/
+  keywords:
+  - soc 2
+  - fedramp
+  - trust center
+  - gdpr
