@@ -9,6 +9,17 @@ description: 'First Resonance builds ION, a modern Factory Operating System (MES
   API keys, cursor-based (Relay) pagination, webhook subscriptions for realtime events,
   and a beta hosted MCP server so AI agents can operate the factory system. This profile
   was enriched from First Resonance''s public developer manual.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
